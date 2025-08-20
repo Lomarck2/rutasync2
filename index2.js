@@ -118,14 +118,27 @@ function initApp() {
   mostrarUbicacionUsuario();
   const inputOrigen = document.getElementById("origen");
   const inputDestino = document.getElementById("destino");
-  const autocompleteOrigen = new google.maps.places.Autocomplete(inputOrigen);
-  autocompleteOrigen.setFields(["geometry", "name"]);
+  const center = { lat: 20.986550, lng: -101.285437 };
+  const defaultBounds = {
+    north: center.lat + 0.1,
+    south: center.lat - 0.1,
+    east: center.lng + 0.1,
+    west: center.lng - 0.1,
+  };  
+  const options = {
+    bounds: defaultBounds,
+    componentRestrictions: { country: "mx" },
+    fields: ["address_components", "geometry", "icon", "name"],
+    strictBounds: false,
+  };
+  const autocompleteOrigen = new google.maps.places.Autocomplete(inputOrigen,options);
+  //autocompleteOrigen.setFields(["geometry", "name"]);
   autocompleteOrigen.addListener("place_changed", () => {
     const place = autocompleteOrigen.getPlace();
     if (!place.geometry) return;
     puntoOrigen = place.geometry.location;
   });
-  const autocompleteDestino = new google.maps.places.Autocomplete(inputDestino);
+  const autocompleteDestino = new google.maps.places.Autocomplete(inputDestino,options);
   autocompleteDestino.setFields(["geometry", "name"]);
   autocompleteDestino.addListener("place_changed", () => {
     const place = autocompleteDestino.getPlace();
@@ -437,4 +450,5 @@ function actualizarUbicacion(){
     alert("Geolocalización no es compatible con este navegador.");
     //initMap();
   }
+
 }
