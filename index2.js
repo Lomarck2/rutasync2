@@ -44,7 +44,7 @@ function mostrarUbicacionUsuario() {
       });
     }, (error) => {
       //alert("No se pudo obtener tu ubicación");
-      shoeError(error);
+      showError(error);
       initMap();
     });
   } else {
@@ -474,4 +474,5 @@ function actualizarUbicacion(){
   }
 
 }
+
 
