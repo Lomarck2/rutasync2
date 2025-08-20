@@ -42,13 +42,35 @@ function mostrarUbicacionUsuario() {
           });
         }
       });
-    }, () => {
-      alert("No se pudo obtener tu ubicación");
+    }, (error) => {
+      //alert("No se pudo obtener tu ubicación");
+      shoeError(error);
       initMap();
     });
   } else {
     alert("Geolocalización no es compatible con este navegador.");
     initMap();
+  }
+}
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      // El usuario rechazó el acceso a la ubicación
+      alert("El usuario denegó el acceso a la ubicación.");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      // La ubicación no está disponible
+      alert("La ubicación no está disponible.");
+      break;
+    case error.TIMEOUT:
+      // Se agotó el tiempo de espera para obtener la ubicación
+      alert("Se agotó el tiempo de espera para obtener la ubicación.");
+      break;
+    case error.UNKNOWN_ERROR:
+      // Se produjo un error desconocido
+      alert("Un error desconocido ocurrió.");
+      break;
   }
 }
 
@@ -452,3 +474,4 @@ function actualizarUbicacion(){
   }
 
 }
+
