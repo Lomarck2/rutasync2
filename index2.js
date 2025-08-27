@@ -21,7 +21,7 @@ function initMap(lat = 20.986550, lng = -101.285437) {
   directionsRenderer.setMap(map);
 }
 //Ubicacion del usuario
-function mostrarUbicacionUsuario() {
+function mostrarUbicacionUsuario(bandera) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
@@ -29,7 +29,8 @@ function mostrarUbicacionUsuario() {
       const latlng = new google.maps.LatLng(lat, lng);
       ubicacionLatLng = {lat:lat, lng:lng};
       origenLatLng = {lat:lat, lng:lng};
-      initMap(lat, lng);
+      if(bandera==1)
+        initMap(lat, lng);
       const geocoder = new google.maps.Geocoder();
       geocoder.geocode({ location: latlng }, (results, status) => {
         if (status === 'OK' && results[0]) {
@@ -137,7 +138,7 @@ const request = {
 
 //Inicializacion de Auto Complete
 function initApp() {
-  mostrarUbicacionUsuario();
+  mostrarUbicacionUsuario(1);
   const inputOrigen = document.getElementById("origen");
   const inputDestino = document.getElementById("destino");
   const center = { lat: 20.986550, lng: -101.285437 };
@@ -172,7 +173,7 @@ function initApp() {
 }
 
 function initApp2() {
-  mostrarUbicacionUsuario();
+  mostrarUbicacionUsuario(1);
   const inputOrigen = document.getElementById("origen");  
   const inputDestino = document.getElementById("destino");
   const autocompleteOrigen = new google.maps.places.PlaceAutocompleteElement({
@@ -474,5 +475,6 @@ function actualizarUbicacion(){
   }
 
 }
+
 
 
