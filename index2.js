@@ -22,6 +22,11 @@ function initMap(lat = 20.986550, lng = -101.285437) {
 }
 //Ubicacion del usuario
 function mostrarUbicacionUsuario(bandera) {
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 10000, // 10 seconds
+    maximumAge: 0 // No cached data
+  };
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
@@ -47,7 +52,7 @@ function mostrarUbicacionUsuario(bandera) {
       //alert("No se pudo obtener tu ubicación");
       showError(error);
       initMap();
-    });
+    }, options);
   } else {
     alert("Geolocalización no es compatible con este navegador.");
     initMap();
@@ -475,6 +480,7 @@ function actualizarUbicacion(){
   }
 
 }
+
 
 
 
