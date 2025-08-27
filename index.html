@@ -172,10 +172,15 @@
   <script src="index2.js"></script>
   
   <script type="module"> 
-    
+    var contador=0;
     import rutas from './JSON/Ruta_Estaciones.json' with {type: 'json'};              
     window.onload = () => {
         busStations = rutas;
+        setInterval(function (){
+          mostrarUbicacionUsuario(0);
+          contador++;
+          console.log(contador);
+        },5000);
     }
   </script>
   <script async
@@ -223,4 +228,5 @@
   <button class="toggle-panel-btn" onclick="togglePanel()">☰</button>
   <div id="map">Cargando Mapa</div>  
 </body>
+
 </html>
