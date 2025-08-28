@@ -474,4 +474,5 @@ function separacion(ubi1,ubi2,minDist){
     if(distancia > minDist)
         bMayor = true;
     return bMayor;    
+
 }
