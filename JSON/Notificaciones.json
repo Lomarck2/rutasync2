@@ -1,0 +1,55 @@
+[
+    {
+    "Ruta":"Maluco-Centro",
+    "Noticias":[
+        {"fecha":"2025-08-02","hora":"11:00:00","evento":"Baches en tramo IEEG-SEG"},
+        {"fecha":"2025-09-02","hora":"11:00:00","evento":"Semafaro descompuesto"}
+    ]
+    },
+    {
+    "Ruta":"Centro-Maluco",
+    "Noticias":[
+        {"fecha":"2025-08-02","hora":"11:00:00","evento":"Baches en tramo IEEG-SEG"}
+    ]
+    },
+    {
+    "Ruta": "Centro-Villas",
+    "Noticias":[        
+    ]
+    }, 
+    {
+    "Ruta": "VillasGto-Centro",
+    "Noticias":[        
+    ]
+    },
+    {
+    "Ruta": "Centro_Sauceda",
+    "Noticias":[        
+    ]
+    },
+    {
+    "Ruta": "Sauceda-Centro",
+    "Noticias":[        
+    ]
+    },
+    {
+    "Ruta": "Centro-Cervera",
+    "Noticias":[        
+    ]
+    },
+    {
+    "Ruta": "Cervera-Centro",
+    "Noticias":[        
+    ]
+    },
+    {
+    "Ruta": "Centro-Perules",
+    "Noticias":[        
+    ]
+    },
+    {
+    "Ruta": "Perules-Centro",
+    "Noticias":[        
+    ]
+    }
+]
