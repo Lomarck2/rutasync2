@@ -163,24 +163,50 @@
         align-self: center;
     }
   </style>
+  <style>
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      
+      display: flex;
+      justify-content: center;
+      align-items: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .overlay.active{
+      visibility: visible;
+      opacity: 1;
+    }
+    .popup{
+      background: rgba(5, 102, 117,0.8);
+      padding: 5px;
+      border-radius: 5px;
+      text-align: center;
+    }
+  </style>
   <script
     src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
     crossorigin="anonymous">
   </script>
-  
-  <script src="index3.js"></script>
+  <script src="index6.js"></script>
   
   <script type="module"> 
     var contador=0;
-    import rutas from './JSON/Ruta_Estaciones.json' with {type: 'json'};              
+    import rutas from './JSON/Ruta_Estaciones.json' with {type: 'json'};     
+    import notis from './JSON/Notificaciones.json' with {type: 'json'};           
     window.onload = () => {
         busStations = rutas;
+        Noticias = notis;
         setInterval(function (){
-          mostrarUbicacionUsuario(0);
+          //mostrarUbicacionUsuario(0);
           /*contador++;
           console.log(contador);*/
-        },5000);
+        },10000);
     }
   </script>
   <script async
@@ -208,7 +234,8 @@
         <option value="">Selecciona una ruta</option>
       </select> 
     </div>
-    <button class="btn" onclick="actualizarUbicacion()">Iniciar viaje</button>
+    <!-- <button class="btn" onclick="actualizarUbicacion()">Iniciar viaje</button> -->
+    <button class="btn" onclick="allMarkers()">Iniciar viaje</button>
     <button class="menu-toggle" onclick="toggleMenu()">Mostrar/Ocultar Menú</button>
     <div class="card-section" id="card-section">
       <div class="card" id="clock-card">
@@ -217,7 +244,7 @@
       </div>
       <div class="card" id="chat-card" onclick="abrirChat()">
         <i class="fas fa-comments"></i>
-        <span>Chat</span>
+        <span id="notificacionesBox">Chat</span>
       </div>
       <div class="card" id="recorridos-card" onclick="mostrarRecorridos()">
         <i class="fas fa-route"></i>
@@ -226,9 +253,16 @@
     </div>
   </div>
   <button class="toggle-panel-btn" onclick="togglePanel()">☰</button>
-  <div id="map">Cargando Mapa</div>  
+  <div id="map">Cargando Mapa</div>
+  <div class="overlay" onclick="this.classList.remove('active')">
+    <div class="popup" id="labelInfo">
+      <!-- <p id="lblDistancia"></p>
+      <p id="lblTiempo"></p> 
+      <p id="labelInfo"></p> -->
+    </div>
+  </div>
 </body>
-
 </html>
+
 
 
