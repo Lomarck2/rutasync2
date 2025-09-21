@@ -499,7 +499,7 @@ function actualizarUbicacion(){
           }
           listaMarcadores = []
           for(var i=0; i>listAuxiliar.length-1; i++){
-            var posicionMarcador = getUbicacion(listAuxiliar[i]);
+            var posicionMarcador = listAuxiliar[i];
             markerNuevo = makeMarkerIcono(posicionMarcador,3,"",[],0);
             listaMarcadores.push(markerNuevo);
           }
@@ -572,4 +572,5 @@ function getUbicacion(marcador){
   var longitude = markerPosition.lng(); 
   var ulatlng = { lat: latitude, lng: longitude };
   return ulatlng;
+
 }
